@@ -92,3 +92,4 @@ Start with:
 - This is designed as a strong final-year foundation.
 - You should adapt dataset/domain based on your supervisor feedback.
 - Keep a weekly log using `docs/10_weekly_progress_template.md`.
+- This submission runs on local models; no OpenAI API key is needed.

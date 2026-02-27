@@ -174,6 +174,13 @@ def build_deck():
         "Docker + AWS EC2 / Azure VM",
     ])
 
+    add_bullets_slide(prs, "Model Execution Mode", [
+        "Current implementation uses local models only",
+        "No OpenAI API key is required for this submission",
+        "Offline mock mode is available for restricted environments",
+        "OpenAI integration can be added later as future scope",
+    ])
+
     add_bullets_slide(prs, "Experimental Strategy", [
         "Experiment 1: Baseline LLM",
         "Experiment 2: Basic RAG",
