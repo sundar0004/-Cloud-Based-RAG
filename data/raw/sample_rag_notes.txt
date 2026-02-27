@@ -1,0 +1,4 @@
+Retrieval-Augmented Generation (RAG) is a method that combines retrieval and generation.
+In RAG, the system retrieves relevant context documents and injects them into the prompt.
+This helps reduce hallucination by grounding answers in evidence.
+FAISS is commonly used as a vector index for similarity search.

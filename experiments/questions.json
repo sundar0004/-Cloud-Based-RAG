@@ -1,0 +1,14 @@
+[
+  {
+    "id": "q1",
+    "question": "What is retrieval-augmented generation?",
+    "ground_truth": "Retrieval-augmented generation combines document retrieval with language generation so answers are grounded in external knowledge.",
+    "relevant_sources": []
+  },
+  {
+    "id": "q2",
+    "question": "Why do large language models hallucinate?",
+    "ground_truth": "LLMs hallucinate because next-token prediction can produce plausible but unsupported statements when evidence is missing or ambiguous.",
+    "relevant_sources": []
+  }
+]

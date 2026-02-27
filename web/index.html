@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Hallucination Reduction - Demo UI</title>
+    <link rel="stylesheet" href="/web/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1>Cloud RAG Demo</h1>
+        <p>Design and Experimental Evaluation of a Cloud-Based RAG Framework</p>
+      </header>
+
+      <section class="panel">
+        <label for="query">Question</label>
+        <textarea id="query" rows="4" placeholder="Ask a question from your documents..."></textarea>
+
+        <div class="row">
+          <div>
+            <label for="mode">Mode</label>
+            <select id="mode">
+              <option value="baseline">Baseline</option>
+              <option value="rag" selected>RAG</option>
+            </select>
+          </div>
+          <div>
+            <label for="topk">Top-K</label>
+            <input id="topk" type="number" min="1" max="10" value="4" />
+          </div>
+          <div class="btn-wrap">
+            <button id="askBtn">Ask</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Answer</h2>
+        <p id="answer">No response yet.</p>
+        <p class="meta" id="latency"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Retrieved Context</h2>
+        <div id="retrieved" class="retrieved">No chunks retrieved.</div>
+      </section>
+    </main>
+
+    <script src="/web/app.js"></script>
+  </body>
+</html>
