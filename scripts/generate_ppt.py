@@ -71,6 +71,21 @@ def add_image_slide(prs, title, image_path, caption):
     tf.paragraphs[0].font.size = Pt(14)
 
 
+def add_dual_image_slide(prs, title, left_image, right_image, caption):
+    slide = prs.slides.add_slide(prs.slide_layouts[5])
+    slide.shapes.title.text = title
+
+    if Path(left_image).exists():
+        slide.shapes.add_picture(left_image, Inches(0.5), Inches(1.3), Inches(6.2), Inches(4.8))
+    if Path(right_image).exists():
+        slide.shapes.add_picture(right_image, Inches(6.6), Inches(1.3), Inches(6.2), Inches(4.8))
+
+    cap = slide.shapes.add_textbox(Inches(0.6), Inches(6.3), Inches(12.1), Inches(0.7))
+    tf = cap.text_frame
+    tf.text = caption
+    tf.paragraphs[0].font.size = Pt(14)
+
+
 def build_deck():
     prs = Presentation()
 
@@ -87,12 +102,6 @@ def build_deck():
         "Institution: Vels University",
         f"Reference Name: {REFERENCE_NAME}",
         f"Presentation Date: {date.today().isoformat()}",
-    ])
-
-    add_bullets_slide(prs, "Contact and Repository", [
-        f"Email: {EMAIL}",
-        f"Phone: {PHONE}",
-        f"GitHub Repository: {GITHUB_REPO}",
     ])
 
     add_bullets_slide(prs, "Agenda", [
@@ -147,14 +156,6 @@ def build_deck():
         "Evaluation Module -> Response + Metrics",
     ])
 
-    add_bullets_slide(prs, "Simple Architecture (Easy View)", [
-        "User/Web UI -> FastAPI Backend",
-        "Backend -> Retriever -> FAISS Index",
-        "Top-K context -> Prompt Builder -> Local LLM",
-        "Answer + latency + retrieved chunks returned to UI",
-        "Ingestion pipeline builds FAISS from your documents",
-    ])
-
     add_two_column_slide(
         prs,
         "Baseline vs RAG",
@@ -182,13 +183,6 @@ def build_deck():
         "Docker + AWS EC2 / Azure VM",
     ])
 
-    add_bullets_slide(prs, "Model Execution Mode", [
-        "Current implementation uses local models only",
-        "No OpenAI API key is required for this submission",
-        "Offline mock mode is available for restricted environments",
-        "OpenAI integration can be added later as future scope",
-    ])
-
     add_bullets_slide(prs, "Experimental Strategy", [
         "Experiment 1: Baseline LLM",
         "Experiment 2: Basic RAG",
@@ -202,28 +196,6 @@ def build_deck():
         "Precision@K and Recall@K (retrieval quality)",
         "Latency (ms) and computational cost",
     ])
-
-    add_bullets_slide(prs, "Implementation Deliverables", [
-        "Document ingestion script",
-        "FAISS indexing pipeline",
-        "API endpoint for baseline and RAG queries",
-        "Experiment runner with JSON result output",
-        "Dockerized cloud deployment setup",
-    ])
-
-    add_image_slide(
-        prs,
-        "Frontend UI Screenshot",
-        "docs/screenshots/frontend_ui.png",
-        "Figure: Web UI showing query input, answer output, and retrieved context.",
-    )
-
-    add_image_slide(
-        prs,
-        "Backend API Screenshot",
-        "docs/screenshots/backend_api_docs.png",
-        "Figure: FastAPI Swagger docs for backend testing and endpoint validation.",
-    )
 
     add_bullets_slide(prs, "Six-Month Timeline", [
         "Month 1: Fundamentals + literature review",
@@ -260,6 +232,14 @@ def build_deck():
         "Supervisor Feedback Welcome",
         "Vels University",
     ])
+
+    add_dual_image_slide(
+        prs,
+        "Application Screenshots (Frontend + Backend)",
+        "docs/screenshots/frontend_ui.png",
+        "docs/screenshots/backend_api_docs.png",
+        "Left: Frontend UI demo | Right: Backend FastAPI Swagger docs",
+    )
 
     prs.save(OUT_FILE)
     print(f"Created: {OUT_FILE}")
