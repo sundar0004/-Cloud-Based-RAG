@@ -147,6 +147,14 @@ def build_deck():
         "Evaluation Module -> Response + Metrics",
     ])
 
+    add_bullets_slide(prs, "Simple Architecture (Easy View)", [
+        "User/Web UI -> FastAPI Backend",
+        "Backend -> Retriever -> FAISS Index",
+        "Top-K context -> Prompt Builder -> Local LLM",
+        "Answer + latency + retrieved chunks returned to UI",
+        "Ingestion pipeline builds FAISS from your documents",
+    ])
+
     add_two_column_slide(
         prs,
         "Baseline vs RAG",
