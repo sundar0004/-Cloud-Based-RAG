@@ -32,7 +32,12 @@ This repository contains an end-to-end implementation and documentation package 
 
 ## 4. Quick Start
 ```bash
-python3 -m venv .venv
+python -m venv .venv
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# Windows CMD
+.\.venv\Scripts\activate.bat
+# macOS / Linux
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
